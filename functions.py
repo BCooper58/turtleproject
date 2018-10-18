@@ -35,4 +35,7 @@ def bound(x, min_x, max_x):
 	return min(max(x, min_x), max_x)
 	
 def update():
+	global pos_x, pos_y, speed_x, speed_y
+	gl = getGroundLevel(pos_x, pos_y)
+	
 

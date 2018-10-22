@@ -1,12 +1,26 @@
 from gturtle import *
 from time import sleep
+import numpy as np
 
 SCREEN_LEFT = -400
 SCREEN_RIGHT = -SCREEN_LEFT
 SCREEN_TOP = 300
 SCREEN_BOTTOM = -SCREEN_TOP
 
-
+PLATFORMS = [(np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1)),
+             (np.random.randint(-301,301,1), np.random.randint(-301,301,1), np.random.randint(-401,401,1))]
+             
+GOAL = (np.random.randint(-301,301,1))
 
 KEYSPEED = 6
 MAXSPEED = 12
@@ -81,6 +95,14 @@ def goalReached():
 	delta_x = (pos_x - goal_x) ** 2
 	delta_y = (pos_y - (goal_y+GROUNDLEVEL)) ** 2
 	return ((delta_x + delta_y) <= (radius ** 2))
+
+def paintPlatforms():
+    penWidth(8)
+    setPenColor(makeColor("sky blue"))
+    for x_left, x_right, height in PLATFORMS:
+        y = GROUNDLEVEL + height - 5
+        setPos(x_left, y)
+        moveTo(x_right, y)
 	
 def paintGoal():
 	goal_x, goal_y, radius = GOAL
@@ -89,6 +111,14 @@ def paintGoal():
 	dot(radius)
 	setPenColor("black")
 	dot(radius * 3 // 4)
+	
+def paintScene():
+    clear(makeColor("#006eff"))
+    setPenColor(makeColor("#49321f"))
+    fillRectangle(SCREEN_LEFT, GROUNDLEVEL, SCREEN_RIGHT, SCREEN_BOTTOM)
+    paintPlatforms()
+    paintGoal()
+    penUp()
 	
 def onKeyPressed(code):
 	global speed_x, speed_y, BREAK

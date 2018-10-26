@@ -94,7 +94,7 @@ def hat():
 	forward(85)
 
 	
-def main():
+def BRENDEN():
 	box()
 	lever()
 	body()
@@ -103,4 +103,5 @@ def main():
 	done()
 	
 	
-main()
+BRENDEN()
+

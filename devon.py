@@ -5,7 +5,7 @@ from random import randint
 bgcolor('black')
 x = 1
 speed(0)
-while x < -500:
+while x > -500:
 
 	r = randint(0,255)
 	g = randint(0,255)

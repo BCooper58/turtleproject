@@ -1,13 +1,15 @@
 from turtle import *
 import turtle
-speed(0)
+speed(1)
 def Seth():
-    color('black' , 'green')
+    color('orange' , 'black')
     begin_fill()
     while True:
         right(250)
         forward(270)
-        if abs(pos()) < 1:
+        left(200)
+        forward(100)
+        if abs(pos()) < 3:
             break
     end_fill()
     exitonclick()
